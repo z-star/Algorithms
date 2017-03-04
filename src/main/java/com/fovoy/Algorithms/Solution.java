@@ -112,8 +112,4 @@ public class Solution {
             return A[astart+partA-1];
     }
 
-    public static void main(String[] args) {
-        System.out.println(Solution.findMedianSortedArrays(new int[]{1, 3}, new int[]{2, 4}));
-    }
-
 }
