@@ -83,10 +83,10 @@ public class Solution {
         int n = B.length;
         int total = m+n;
         if (total%2 != 0)
-            return (double) findKth(A, 0, m-1, B, 0, n-1, total/2+1);//k传得是第k个，index实则k-1
+            return (double) findKth(A, 0, m-1, B, 0, n-1, total/2+1);
         else {
-            double x = findKth(A, 0, m-1, B, 0, n-1, total/2);//k传得是第k个，index实则k-1
-            double y = findKth(A, 0, m-1, B, 0, n-1, total/2+1);//k传得是第k个，index实则k-1
+            double x = findKth(A, 0, m-1, B, 0, n-1, total/2);
+            double y = findKth(A, 0, m-1, B, 0, n-1, total/2+1);
             return (double)(x+y)/2;
         }
     }
