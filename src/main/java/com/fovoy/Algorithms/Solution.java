@@ -135,4 +135,38 @@ public class Solution {
         return R - L - 1;
     }
 
+    public static String convert(String s, int nRows) {
+        int len = s.length();
+        if (len == 0 || nRows < 2) return s;
+        int lag = 2 * nRows - 2;
+        String ret = "";
+        for (int i = 0; i < nRows; i++) {
+            for (int j = i; j < len; j += lag) {
+                ret += s.charAt(j);
+                if (i > 0 && i < nRows - 1) {
+                    int t = j + lag - 2 * i;
+                    if (t < len) {
+                        ret += s.charAt(t);
+                    }
+                }
+            }
+        }
+        return ret;
+    }
+
+    public static int reverse(int x) {
+        int max = Integer.MAX_VALUE;
+        int min = Integer.MIN_VALUE;
+        long sum = 0;
+
+        while (x != 0) {
+            int temp = x % 10;
+            sum = sum * 10 + temp;
+            if (sum > max || sum < min) {
+                return 0;
+            }
+            x = x / 10;
+        }
+        return (int) sum;
+    }
 }
