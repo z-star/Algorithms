@@ -81,13 +81,13 @@ public class Solution {
     public static double findMedianSortedArrays(int A[], int B[]) {
         int m = A.length;
         int n = B.length;
-        int total = m+n;
-        if (total%2 != 0)
-            return (double) findKth(A, 0, m-1, B, 0, n-1, total/2+1);
+        int total = m + n;
+        if (total % 2 != 0)
+            return (double) findKth(A, 0, m - 1, B, 0, n - 1, total / 2 + 1);
         else {
-            double x = findKth(A, 0, m-1, B, 0, n-1, total/2);
-            double y = findKth(A, 0, m-1, B, 0, n-1, total/2+1);
-            return (double)(x+y)/2;
+            double x = findKth(A, 0, m - 1, B, 0, n - 1, total / 2);
+            double y = findKth(A, 0, m - 1, B, 0, n - 1, total / 2 + 1);
+            return (double) (x + y) / 2;
         }
     }
 
@@ -95,21 +95,44 @@ public class Solution {
         int m = aend - astart + 1;
         int n = bend - bstart + 1;
 
-        if(m>n)
-            return findKth(B,bstart,bend,A,astart,aend,k);
-        if(m==0)
-            return B[k-1];
-        if(k==1)
-            return Math.min(A[astart],B[bstart]);
+        if (m > n)
+            return findKth(B, bstart, bend, A, astart, aend, k);
+        if (m == 0)
+            return B[k - 1];
+        if (k == 1)
+            return Math.min(A[astart], B[bstart]);
 
-        int partA = Math.min(k/2,m);
+        int partA = Math.min(k / 2, m);
         int partB = k - partA;
-        if(A[astart+partA-1] < B[bstart+partB-1])
-            return findKth(A,astart+partA,aend,B,bstart,bend,k-partA);
-        else if(A[astart+partA-1] > B[bstart+partB-1])
-            return findKth(A,astart,aend,B,bstart+partB,bend,k-partB);
+        if (A[astart + partA - 1] < B[bstart + partB - 1])
+            return findKth(A, astart + partA, aend, B, bstart, bend, k - partA);
+        else if (A[astart + partA - 1] > B[bstart + partB - 1])
+            return findKth(A, astart, aend, B, bstart + partB, bend, k - partB);
         else
-            return A[astart+partA-1];
+            return A[astart + partA - 1];
+    }
+
+    public static String longestPalindrome(String s) {
+        int start = 0, end = 0;
+        for (int i = 0; i < s.length(); i++) {
+            int len2 = expandAroundCenter(s, i, i);
+            int len1 = expandAroundCenter(s, i, i + 1);
+            int len = Math.max(len1, len2);
+            if (len > end - start) {
+                start = i - (len - 1) / 2;
+                end = i + len / 2;
+            }
+        }
+        return s.substring(start, end + 1);
+    }
+
+    private static int expandAroundCenter(String s, int left, int right) {
+        int L = left, R = right;
+        while (L >= 0 && R < s.length() && s.charAt(L) == s.charAt(R)) {
+            L--;
+            R++;
+        }
+        return R - L - 1;
     }
 
 }
