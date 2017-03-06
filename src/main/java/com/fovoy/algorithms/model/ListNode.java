@@ -1,4 +1,4 @@
-package com.fovoy.Algorithms.model;
+package com.fovoy.algorithms.model;
 
 /**
  * Created by zxz.zhang on 2017/3/4.

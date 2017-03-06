@@ -1,6 +1,6 @@
-package com.fovoy.Algorithms;
+package com.fovoy.algorithms;
 
-import com.fovoy.Algorithms.model.ListNode;
+import com.fovoy.algorithms.model.ListNode;
 
 import java.util.*;
 
