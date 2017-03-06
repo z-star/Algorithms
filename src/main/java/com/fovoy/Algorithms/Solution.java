@@ -169,4 +169,32 @@ public class Solution {
         }
         return (int) sum;
     }
+
+    public static boolean isPalindrome(int x) {
+        if (x < 0) {
+            return false;
+        }
+        int len = 1;
+        while (x / len > 10) {
+            len *= 10;
+        }
+        while (x > 0) {
+            int left = x / len;
+            int right = x % 10;
+            if (left != right) {
+                return false;
+            } else {
+                x = (x % len) / 10;
+                len /= 100;
+            }
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        int x = 1221;
+        int len = 1000;
+        x = (x % len) / 10;
+        System.out.println(x);
+    }
 }
