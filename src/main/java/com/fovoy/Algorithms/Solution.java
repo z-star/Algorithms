@@ -169,7 +169,6 @@ public class Solution {
         }
         return (int) sum;
     }
-
     public static boolean isPalindrome(int x) {
         if (x < 0) {
             return false;
@@ -189,12 +188,5 @@ public class Solution {
             }
         }
         return true;
-    }
-
-    public static void main(String[] args) {
-        int x = 1221;
-        int len = 1000;
-        x = (x % len) / 10;
-        System.out.println(x);
     }
 }
