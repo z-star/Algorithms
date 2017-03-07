@@ -42,7 +42,7 @@ public class Sort {
         }
     }
 
-    public void ChoseSort(int[] nums) {
+    public void choseSort(int[] nums) {
         int len = nums.length;
         for (int i = 0; i < len; i++) {
             int min = i;
