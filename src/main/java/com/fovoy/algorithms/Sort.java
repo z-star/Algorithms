@@ -3,6 +3,7 @@ package com.fovoy.algorithms;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.*;
 
 /**
  * Created by zxz.zhang on 2017/3/7.
@@ -75,5 +76,18 @@ public class Sort {
         }
     }
 
+    public static void main(String[] args) {
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(10, 10, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue(1000), r -> {
+            Thread thread = new Thread(r, "name");
+            thread.setDaemon(true);
+            return thread;
+        });
 
+        ThreadPoolExecutor cacheThread = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60L, TimeUnit.SECONDS, new SynchronousQueue(), r -> {
+            Thread thread = new Thread(r, "name");
+            thread.setDaemon(true);
+            return thread;
+        });
+
+    }
 }
