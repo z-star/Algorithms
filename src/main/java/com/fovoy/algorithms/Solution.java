@@ -3,6 +3,7 @@ package com.fovoy.algorithms;
 import com.fovoy.algorithms.model.ListNode;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Created by zxz.zhang on 2017/3/4.
@@ -169,6 +170,7 @@ public class Solution {
         }
         return (int) sum;
     }
+
     public static boolean isPalindrome(int x) {
         if (x < 0) {
             return false;
@@ -190,7 +192,24 @@ public class Solution {
         return true;
     }
 
-    public static void main(String[] args) {
 
+    public static List<List<Integer>> threeSum(int[] nums) {
+        Integer[] set =Arrays.stream(nums).boxed().collect(Collectors.toList()).toArray(new Integer[]{});
+        int len = set.length;
+        List<List<Integer>> ListNums = new ArrayList();
+        for (int i = 0; i < len - 2; i++) {
+            for (int j = i + 1; j < len - 1; j++) {
+                for (int k = j + 1; k < len; k++) {
+                    if (set[i] + set[j] + set[k] == 0) {
+                        List<Integer> list = new ArrayList();
+                        list.add(set[i]);
+                        list.add(set[j]);
+                        list.add(set[k]);
+                        ListNums.add(list);
+                    }
+                }
+            }
+        }
+        return ListNums;
     }
 }
